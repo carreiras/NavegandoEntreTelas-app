@@ -20,10 +20,12 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import carreiras.com.github.navegandoentretelas.ui.theme.NavegandoEntreTelasTheme
 
 @Composable
-fun MenuScreen() {
+fun MenuScreen(navController: NavController) {
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -43,7 +45,7 @@ fun MenuScreen() {
                 .align(Alignment.Center)
         ) {
             Button(
-                onClick = { /*TODO*/ },
+                onClick = { navController.navigate("perfil") },
                 colors = ButtonDefaults.buttonColors(Color.White),
                 modifier = Modifier.size(width = 200.dp, height = 48.dp)
             ) {
@@ -51,7 +53,7 @@ fun MenuScreen() {
             }
             Spacer(modifier = Modifier.height(16.dp))
             Button(
-                onClick = { /*TODO*/ },
+                onClick = { navController.navigate("pedidos") },
                 colors = ButtonDefaults.buttonColors(Color.White),
                 modifier = Modifier.size(width = 200.dp, height = 48.dp)
             ) {
@@ -59,7 +61,7 @@ fun MenuScreen() {
             }
             Spacer(modifier = Modifier.height(16.dp))
             Button(
-                onClick = { /*TODO*/ },
+                onClick = { navController.navigate("login") },
                 colors = ButtonDefaults.buttonColors(Color.White),
                 modifier = Modifier.size(width = 200.dp, height = 48.dp)
             ) {
@@ -72,7 +74,8 @@ fun MenuScreen() {
 @Preview(showBackground = true)
 @Composable
 fun MenuScreenPreview() {
+    val navController = rememberNavController()
     NavegandoEntreTelasTheme {
-        MenuScreen()
+        MenuScreen(navController)
     }
 }

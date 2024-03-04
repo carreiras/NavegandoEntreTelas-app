@@ -15,10 +15,12 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import carreiras.com.github.navegandoentretelas.ui.theme.NavegandoEntreTelasTheme
 
 @Composable
-fun PedidosScreen() {
+fun PedidosScreen(navController: NavController) {
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -32,7 +34,7 @@ fun PedidosScreen() {
             color = Color.White
         )
         Button(
-            onClick = { /*TODO*/ },
+            onClick = { navController.navigate("menu") },
             colors = ButtonDefaults.buttonColors(Color.White),
             modifier = Modifier.align(Alignment.Center)
         ) {
@@ -44,7 +46,8 @@ fun PedidosScreen() {
 @Preview(showBackground = true)
 @Composable
 fun PedidosScreenPreview() {
+    val navController = rememberNavController()
     NavegandoEntreTelasTheme {
-        PedidosScreen()
+        PedidosScreen(navController)
     }
 }

@@ -15,11 +15,14 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import carreiras.com.github.navegandoentretelas.ui.theme.NavegandoEntreTelasTheme
 
 @Composable
-fun LoginScreen() {
-    Box(
+fun LoginScreen(navController: NavController) {
+
+Box(
         modifier = Modifier
             .fillMaxSize()
             .background(Color(0xFFED145B))
@@ -32,7 +35,7 @@ fun LoginScreen() {
             color = Color.White
         )
         Button(
-            onClick = { /*TODO*/ },
+            onClick = { navController.navigate("menu") },
             colors = ButtonDefaults.buttonColors(Color.White),
             modifier = Modifier.align(Alignment.Center)
         ) {
@@ -49,6 +52,7 @@ fun LoginScreen() {
 @Composable
 fun LoginScreenPreview() {
     NavegandoEntreTelasTheme {
-        LoginScreen()
+        val navController = rememberNavController()
+        LoginScreen(navController)
     }
 }
