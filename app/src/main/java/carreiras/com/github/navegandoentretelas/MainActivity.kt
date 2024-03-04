@@ -33,7 +33,10 @@ class MainActivity : ComponentActivity() {
                     ) {
                         composable("login") { LoginScreen(navController) }
                         composable("menu") { MenuScreen(navController) }
-                        composable("perfil") { PerfilScreen(navController) }
+                        composable("perfil/{nome}") {
+                            val nome: String? = it.arguments?.getString("nome", "")
+                            PerfilScreen(navController, nome!!)
+                        }
                         composable("pedidos") { PedidosScreen(navController) }
                     }
                 }
