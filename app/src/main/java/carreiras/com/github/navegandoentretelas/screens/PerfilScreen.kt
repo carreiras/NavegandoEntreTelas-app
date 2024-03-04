@@ -20,7 +20,11 @@ import androidx.navigation.compose.rememberNavController
 import carreiras.com.github.navegandoentretelas.ui.theme.NavegandoEntreTelasTheme
 
 @Composable
-fun PerfilScreen(navController: NavController, nome: String) {
+fun PerfilScreen(
+    navController: NavController,
+    nome: String,
+    idade: Int
+) {
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -28,7 +32,7 @@ fun PerfilScreen(navController: NavController, nome: String) {
             .padding(32.dp)
     ) {
         Text(
-            text = "PERFIL - $nome",
+            text = "PERFIL - $nome tem $idade anos",
             fontSize = 24.sp,
             fontWeight = FontWeight.Bold,
             color = Color.White
@@ -52,6 +56,6 @@ fun PerfilScreen(navController: NavController, nome: String) {
 fun PerfilScreenPreview() {
     val navController = rememberNavController()
     NavegandoEntreTelasTheme {
-        PerfilScreen(navController, "João da Silva")
+        PerfilScreen(navController, "João da Silva", 48)
     }
 }

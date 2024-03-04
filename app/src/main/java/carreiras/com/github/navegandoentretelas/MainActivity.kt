@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
@@ -34,9 +35,22 @@ class MainActivity : ComponentActivity() {
                     ) {
                         composable("login") { LoginScreen(navController) }
                         composable("menu") { MenuScreen(navController) }
-                        composable("perfil/{nome}") {
-                            val nome: String? = it.arguments?.getString("nome", "")
-                            PerfilScreen(navController, nome!!)
+                        composable(
+                            route = "perfil/{nome}/{idade}",
+                            arguments = listOf(
+                                navArgument("nome") {
+                                    type = NavType.StringType
+                                },
+                                navArgument("idade") {
+                                    type = NavType.IntType
+                                }
+                            )
+                        ) {
+                            val nome: String? =
+                                it.arguments?.getString("nome", "")
+                            val idade: Int? =
+                                it.arguments?.getInt("idade", 0)
+                            PerfilScreen(navController, nome!!, idade!!)
                         }
                         composable(
                             route = "pedidos?cliente={cliente}",
