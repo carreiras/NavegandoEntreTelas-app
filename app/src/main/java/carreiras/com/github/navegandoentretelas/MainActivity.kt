@@ -10,6 +10,7 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
 import carreiras.com.github.navegandoentretelas.screens.LoginScreen
 import carreiras.com.github.navegandoentretelas.screens.MenuScreen
 import carreiras.com.github.navegandoentretelas.screens.PedidosScreen
@@ -37,7 +38,14 @@ class MainActivity : ComponentActivity() {
                             val nome: String? = it.arguments?.getString("nome", "")
                             PerfilScreen(navController, nome!!)
                         }
-                        composable("pedidos") { PedidosScreen(navController) }
+                        composable(
+                            route = "pedidos?cliente={cliente}",
+                            arguments = listOf(navArgument(name = "cliente") {
+                                defaultValue = "Sem cliente"
+                            })
+                        ) {
+                            PedidosScreen(navController, it.arguments?.getString("cliente"))
+                        }
                     }
                 }
             }

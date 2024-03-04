@@ -20,7 +20,7 @@ import androidx.navigation.compose.rememberNavController
 import carreiras.com.github.navegandoentretelas.ui.theme.NavegandoEntreTelasTheme
 
 @Composable
-fun PedidosScreen(navController: NavController) {
+fun PedidosScreen(navController: NavController, cliente: String?) {
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -28,7 +28,7 @@ fun PedidosScreen(navController: NavController) {
             .padding(32.dp)
     ) {
         Text(
-            text = "PEDIDOS",
+            text = "PEDIDOS - $cliente",
             fontSize = 24.sp,
             fontWeight = FontWeight.Bold,
             color = Color.White
@@ -48,6 +48,6 @@ fun PedidosScreen(navController: NavController) {
 fun PedidosScreenPreview() {
     val navController = rememberNavController()
     NavegandoEntreTelasTheme {
-        PedidosScreen(navController)
+        PedidosScreen(navController, "João da Silva")
     }
 }
