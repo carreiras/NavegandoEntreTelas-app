@@ -22,7 +22,7 @@ import carreiras.com.github.navegandoentretelas.ui.theme.NavegandoEntreTelasThem
 @Composable
 fun LoginScreen(navController: NavController) {
 
-Box(
+    Box(
         modifier = Modifier
             .fillMaxSize()
             .background(Color(0xFFED145B))
